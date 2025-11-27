@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import '../theme/theme.dart';
-import '../../model/profile_tile_model.dart'; // 1. Import the model
+import '../../model/profile_tile_model.dart'; 
 
 class ProfileApp extends StatelessWidget {
-  // 2. Add the variable to hold the data
+
   final ProfileData profile;
 
-  // 3. Update constructor
   const ProfileApp({super.key, required this.profile});
 
   @override
@@ -21,7 +20,6 @@ class ProfileApp extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      // 4. Add SingleChildScrollView for scrolling
       body: SingleChildScrollView( 
         child: Center(
           child: Column(
@@ -30,12 +28,11 @@ class ProfileApp extends StatelessWidget {
               const SizedBox(height: 40),
               CircleAvatar(
                 radius: 60,
-                // 5. Use data from the profile object
                 backgroundImage: AssetImage(profile.avatarUrl), 
               ),
               const SizedBox(height: 20),
               Text(
-                profile.name, // Dynamic Name
+                profile.name, 
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -43,16 +40,13 @@ class ProfileApp extends StatelessWidget {
                 ),
               ),
               Text(
-                profile.position, // Dynamic Position
+                profile.position,
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
                 ),
               ),
               const SizedBox(height: 20),
-              
-              // 6. THE LOOP: Generate tiles dynamically
-              // We use the spread operator (...) and .map()
               ...profile.tiles.map((tile) => ProfileTile(
                     icon: tile.icon,
                     title: tile.title,
